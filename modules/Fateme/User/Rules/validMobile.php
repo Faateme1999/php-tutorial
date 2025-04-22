@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace Fateme\User\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -12,9 +12,9 @@ class validMobile implements ValidationRule
      *
      * @param \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function validate(string $attribute, mixed $value, Closure $fail):void
     {
-        if (!preg_match("/^9[0-9]{9}/", $value)) {
+        if (!preg_match("/^9[0-9]{9}$/", $value)) {
             $fail('فرمت موبایل نامعتبر است');
         }
 

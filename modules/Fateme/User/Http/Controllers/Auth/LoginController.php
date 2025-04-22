@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Fateme\User\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -55,6 +56,11 @@ class LoginController extends Controller
             $field => $username,
             'password' => $request->password
         ];
+    }
+
+    public function showLoginForm()
+    {
+        return view('User::Front.login');
     }
 
 }

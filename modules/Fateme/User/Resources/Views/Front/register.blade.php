@@ -1,4 +1,4 @@
-@extends('auth.master')
+@extends('User::Front.master')
 
 @section('content')
 <form action="" class="form" method="post">
@@ -54,9 +54,9 @@
 
         <button  class="btn continue-btn">ثبت نام و ادامه</button>
         </form>
-    </div>
-    <div class="form-footer">
-        <a href="{{route('login')}}">صفحه ورود</a>
+        <div class="form-footer">
+            <a href="{{route('login')}}">صفحه ورود</a>
+        </div>
     </div>
 </form>
 @endsection
