@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit;
+namespace Fateme\User\Tests\Unit;
 
-use Fateme\User\Rules\validMobile;
 use Fateme\User\Rules\validPassword;
 use PHPUnit\Framework\TestCase;
 

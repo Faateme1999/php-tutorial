@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Fateme\User\Tests\Feature;
 
 use Fateme\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
