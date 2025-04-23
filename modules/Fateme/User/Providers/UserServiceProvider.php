@@ -2,7 +2,8 @@
 
 namespace Fateme\User\Providers;
 
-use Carbon\Laravel\ServiceProvider;
+//use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Fateme\User\Models\User;
 
 class UserServiceProvider extends ServiceProvider

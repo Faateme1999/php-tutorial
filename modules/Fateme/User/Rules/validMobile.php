@@ -14,6 +14,7 @@ class validMobile implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail):void
     {
+//        dd($value);
         if (!preg_match("/^9[0-9]{9}$/", $value)) {
             $fail('فرمت موبایل نامعتبر است');
         }

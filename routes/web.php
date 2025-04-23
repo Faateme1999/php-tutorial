@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/test', function () {
+    return new \Fateme\User\Mail\VerifyCodeMail(\Fateme\User\Models\User::first(), code:734285);
+});
+
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
