@@ -2,13 +2,12 @@
 
 namespace Fateme\User\Notifications;
 
-use Fateme\User\Mail\VerifyCodeMail;
+use Fateme\User\Mail\ResetPasswordRequestMail;
 use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyMailNotification extends Notification
+class ResetPasswordRequestNotification extends Notification
 {
     use Queueable;
 
@@ -39,9 +38,9 @@ class VerifyMailNotification extends Notification
     {
         $code = VerifyCodeService::generate();
 
-        VerifyCodeService::store($notifiable->id, $code,now()->addDay());
+        VerifyCodeService::store($notifiable->id, $code, time:120);
 
-        return (new VerifyCodeMail($notifiable, $code))
+        return (new ResetPasswordRequestMail($code))
             ->to($notifiable->email);
     }
 

@@ -18,7 +18,7 @@ class MobileValidationTest extends TestCase
             $failedMessage = $message;
         };
 
-        (new validMobile())->validate('', '912345671', $fail);
+        (new validMobile())->validate('', '91234545', $fail);
 
         $this->assertNotNull($failedMessage);
     }
@@ -31,7 +31,7 @@ class MobileValidationTest extends TestCase
             $failedMessage = $message;
         };
 
-        (new validMobile())->validate('', '9123456718977', $fail);
+        (new validMobile())->validate('', '9123456777', $fail);
 
         $this->assertNotNull($failedMessage);
     }

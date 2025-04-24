@@ -2,13 +2,14 @@
 
 @section('content')
     <div class="account act">
-        <form action="{{route('verification.verify')}}" class="form" method="post">
+        <form action="{{route('password.checkVerifyCode')}}" class="form" method="post">
             @csrf
+            <input type="hidden" name="email" value="{{request()->email}}">
             <a class="account-logo" href="/">
                 <img src="/img/weblogo.png" alt="">
             </a>
             <div class="card-header">
-                <p class="activation-code-title">کد فرستاده شده به ایمیل  <span>Mohammadniko3@gmail.com</span>
+                <p class="activation-code-title">کد فرستاده شده به ایمیل  <span>{{request()->email}}</span>
                     را وارد کنید . ممکن است ایمیل به پوشه spam فرستاده شده باشد
                 </p>
             </div>
@@ -38,6 +39,6 @@
 @endsection
 
 @section('js')
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/activation-code.js"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/activation-code.js"></script>
 @endsection

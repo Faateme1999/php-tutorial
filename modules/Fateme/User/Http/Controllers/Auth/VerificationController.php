@@ -5,6 +5,8 @@ namespace Fateme\User\Http\Controllers\Auth;
 
 
 use App\Http\Controllers\Controller;
+use Fateme\User\Requests\VerifyCodeRequest;
+use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 
@@ -38,7 +40,8 @@ class VerificationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
+//        $this->middleware('signed')->only('verify');
+//        vase taeed email to mailtrap bood
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
@@ -48,4 +51,19 @@ class VerificationController extends Controller
             ? redirect($this->redirectPath())
             : view('User::Front.verify');
     }
+
+    public function verify(VerifyCodeRequest $request)
+    {
+
+        if (!VerifyCodeService::check(auth()->id(), $request->verify_code)) {
+            return back()->withErrors(['verify_code' => 'کد درست نیست']);
+        }
+
+        auth()->user()->markEmailAsVerified();
+        return redirect()->route('home');
+
+
+//        dd('code ro bezne in vasash miad');
+    }
+
 }

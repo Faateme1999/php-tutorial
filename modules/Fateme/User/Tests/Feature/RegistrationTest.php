@@ -3,6 +3,7 @@
 namespace Fateme\User\Tests\Feature;
 
 use Fateme\User\Models\User;
+use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -36,6 +37,26 @@ $response->assertStatus(200);
         $response=$this->get(route('home'));
         $response->assertRedirect(route('verification.notice'));
     }
+
+    public function test_user_can_verify_account()
+    {
+        $user= User::create(
+            [
+                'name' => 'fateme',
+                'email' => 'fabbaszadeh77@yahoo.com',
+                'password' => bcrypt('A!123a'),
+            ]
+        );
+        $code=VerifyCodeService::generate();
+        VerifyCodeService::store($user->id, $code,now()->addDay());
+        auth()->loginUsingId($user->id);
+        $this->assertAuthenticated();
+        $this->post(route('verification.verify'), ['verify_code' => $code]);
+
+        $this->assertEquals(true,$user->fresh()->hasVerifiedEmail());
+    }
+
+
 
     public function test_verified_user_can_see_home_page()
     {

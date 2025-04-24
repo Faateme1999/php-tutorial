@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyCodeMail extends Mailable
+class ResetPasswordRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class VerifyCodeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'کد فعال‌سازی'
+            subject: 'بازیابی رمز عبور'
         );
     }
 
@@ -41,7 +41,7 @@ class VerifyCodeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'User::mails.verify-mail',
+            markdown: 'User::mails.reset-password-verify-code',
 //            with: [
 //                'code' => $this->code,
 //            ]

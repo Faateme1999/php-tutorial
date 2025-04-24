@@ -3,6 +3,7 @@
 namespace Fateme\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Fateme\User\Notifications\ResetPasswordRequestNotification;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Fateme\User\Notifications\VerifyMailNotification;
@@ -52,5 +53,10 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new VerifyMailNotification());
 //    inja test_user_can_register ejra mishe
 
+    }
+
+    public function sendResetPasswordRequestNotification()
+    {
+        $this->notify(new ResetPasswordRequestNotification());
     }
 }

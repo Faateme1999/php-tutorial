@@ -1,9 +1,13 @@
 <?php
 
+
 namespace Fateme\User\Http\Controllers\Auth;
 
 
+
 use App\Http\Controllers\Controller;
+use Fateme\User\Requests\ChangePasswordRequest;
+use Fateme\User\Services\UserService;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -30,6 +34,13 @@ class ResetPasswordController extends Controller
 
     public function showResetForm()
     {
-return view('User::Front.passwords.reset');
+       return view('User::Front.passwords.reset');
+    }
+
+    public function reset(ChangePasswordRequest $request)
+    {
+        UserService::changePassword(auth()->user(), $request->password);
+        return redirect(route('home'));
+
     }
 }
