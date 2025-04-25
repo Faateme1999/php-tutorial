@@ -170,6 +170,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         UserServiceProvider::class,
+        Fateme\User\Providers\UserServiceProvider::class,
+        Fateme\Dashboard\Providers\DashboardServiceProvider::class,
 
 
     ])->toArray(),

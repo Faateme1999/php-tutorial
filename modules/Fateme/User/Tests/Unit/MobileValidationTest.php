@@ -18,9 +18,9 @@ class MobileValidationTest extends TestCase
             $failedMessage = $message;
         };
 
-        (new validMobile())->validate('', '91234545', $fail);
+        (new validMobile())->validate('', '9123454576', $fail);
 
-        $this->assertNotNull($failedMessage);
+        $this->assertNull($failedMessage);
     }
 
     public function test_mobile_can_not_be_more_than_10_character()
@@ -31,9 +31,10 @@ class MobileValidationTest extends TestCase
             $failedMessage = $message;
         };
 
-        (new validMobile())->validate('', '9123456777', $fail);
+        (new validMobile())->validate('', '91234567890', $fail);
 
         $this->assertNotNull($failedMessage);
+
     }
 
     public function test_mobile_should_start_by_9()

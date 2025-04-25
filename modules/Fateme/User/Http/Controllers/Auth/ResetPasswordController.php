@@ -3,8 +3,6 @@
 
 namespace Fateme\User\Http\Controllers\Auth;
 
-
-
 use App\Http\Controllers\Controller;
 use Fateme\User\Requests\ChangePasswordRequest;
 use Fateme\User\Services\UserService;

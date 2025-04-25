@@ -3,7 +3,6 @@
 
 namespace Fateme\User\Http\Controllers\Auth;
 
-
 use App\Http\Controllers\Controller;
 use Fateme\User\Repositories\UserRepo;
 use Fateme\User\Requests\ResetPasswordVerifyCodeRequest;
