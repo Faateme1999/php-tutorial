@@ -26,6 +26,7 @@
             "App\\": "app/",
             "Fateme\\User\\": "modules/Fateme/User/",
             "Fateme\\Dashboard\\": "modules/Fateme/Dashboard/",
+            "Fateme\\Category\\": "modules/Fateme/Category/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

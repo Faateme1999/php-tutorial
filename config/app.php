@@ -172,6 +172,7 @@ return [
         UserServiceProvider::class,
         Fateme\User\Providers\UserServiceProvider::class,
         Fateme\Dashboard\Providers\DashboardServiceProvider::class,
+        Fateme\Category\Providers\CategoryServiceProvider::class,
 
 
     ])->toArray(),
