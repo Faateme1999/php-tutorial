@@ -1,7 +1,7 @@
 @extends('User::Front.master')
 
 @section('content')
-    <form method="POST" action="{{ route('login') }}" class="form" >
+    <form method="POST" action="{{ route('login.submit') }}" class="form" >
         @csrf
         <a class="account-logo" href="/">
             <img src="img/weblogo.png" alt="">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="form-footer">
-            <a href="{{route('register')}}">صفحه ثبت نام</a>
+            <a href="{{route('register.show')}}">صفحه ثبت نام</a>
         </div>
     </form>
 @endsection

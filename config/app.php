@@ -173,6 +173,9 @@ return [
         Fateme\User\Providers\UserServiceProvider::class,
         Fateme\Dashboard\Providers\DashboardServiceProvider::class,
         Fateme\Category\Providers\CategoryServiceProvider::class,
+        Fateme\RolePermissions\Providers\RolePermissionsServiceProvider::class,
+        Fateme\Course\Providers\CourseServiceProvider::class,
+        Fateme\Media\Providers\MediaServiceProvider::class,
 
 
     ])->toArray(),
@@ -189,6 +192,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Image'=>Intervention\Image\Laravel\Facades\Image::class,
+
+
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

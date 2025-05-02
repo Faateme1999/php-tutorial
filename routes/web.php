@@ -1,28 +1,29 @@
 <?php
 
+namespace Fateme\RolePermissions\Repositories;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('index');
 });
 
 Route::get('/test', function () {
-    return new \Fateme\User\Mail\VerifyCodeMail(\Fateme\User\Models\User::first(), code:734285);
+\Spatie\Permission\Models\Permission::create(['name' => 'manage_role_permissions']);
+auth()->user()->givePermissionTo('manage_role_permissions');
+return auth()->user()->permissions;
+});
+
+Route::get('/test-permissions', function () {
+    $repo = new \Fateme\RolePermissions\Repositories\PermissionRepo();
+    return $repo->all();
 });
 
 
-Auth::routes(['verify' => true]);
+
+
+
+
+
 
 
 

@@ -1,0 +1,19 @@
+<?php
+
+namespace Fateme\Category\Responses;
+
+use Illuminate\Http\Response;
+
+class AjaxResponses
+{
+    public static function SuccessResponse()
+    {
+        return response()->json(['message'=>'عملیات با موفقیت  انجام شد'], status:Response::HTTP_OK);
+}
+
+    public static function FailedResponse()
+    {
+        return response()->json(['message'=>'عملیات با موفقیت  انجام نشد'], status:Response::HTTP_INTERNAL_SERVER_ERROR);
+
+    }
+}

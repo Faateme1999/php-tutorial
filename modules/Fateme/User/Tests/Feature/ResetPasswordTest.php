@@ -5,7 +5,7 @@ namespace Fateme\User\Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ResetPasswordTest extends TestCase
+class  ResetPasswordTest extends TestCase
 {
     use RefreshDatabase;
 

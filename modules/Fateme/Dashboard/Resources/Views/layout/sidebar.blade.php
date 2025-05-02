@@ -9,3 +9,10 @@
         </div>
         <span class="profile__name">کاربر : محمد نیکو</span>
     </div>
+    <ul>
+        @foreach(config('sidebar.items') as $sidebarItem)
+            <li class="item-li {{$sidebarItem['icon']}} @if(str_starts_with(request()->url(),$sidebarItem['url'] )) is-active @endif ">
+            <a href="{{$sidebarItem['url']}}"> {{$sidebarItem['title']}}</a>
+            </li>
+        @endforeach
+    </ul>

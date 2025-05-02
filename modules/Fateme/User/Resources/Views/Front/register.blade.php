@@ -6,7 +6,7 @@
         <img src="img/weblogo.png" alt="">
     </a>
     <div class="form-content form-account">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register.submit') }}">
             @csrf
         <input type="text" class="txt @error('name') is-invalid @enderror"  placeholder="نام و نام خانوادگی *"
                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
@@ -55,7 +55,7 @@
         <button  class="btn continue-btn">ثبت نام و ادامه</button>
         </form>
         <div class="form-footer">
-            <a href="{{route('login')}}">صفحه ورود</a>
+            <a href="{{route('login.show')}}">صفحه ورود</a>
         </div>
     </div>
 </form>

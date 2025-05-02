@@ -7,10 +7,13 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^3.11",
+        "intervention/image-laravel": "^1.5",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "laravel/ui": "^4.6"
+        "laravel/ui": "^4.6",
+        "spatie/laravel-permission": "^6.17"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -27,6 +30,9 @@
             "Fateme\\User\\": "modules/Fateme/User/",
             "Fateme\\Dashboard\\": "modules/Fateme/Dashboard/",
             "Fateme\\Category\\": "modules/Fateme/Category/",
+            "Fateme\\RolePermissions\\": "modules/Fateme/RolePermissions/",
+            "Fateme\\Course\\": "modules/Fateme/Course/",
+            "Fateme\\Media\\": "modules/Fateme/Media/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

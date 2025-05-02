@@ -8,13 +8,20 @@ class Category extends Model
 {
      protected $guarded = [];
 
+//    public function getParentAttribute()
+//    {
+////        vasatesh harchi mikhaym begire ro minevisim
+//
+//        return (is_null($this->parent_id)) ? 'ندارد': $this-> parentCategory->title;
+//     }
     public function getParentAttribute()
     {
-//        vasatesh harchi mikhaym begire ro minevisim
+        return (is_null($this->parent_id) || is_null($this->parentCategory))
+            ? 'ندارد'
+            : $this->parentCategory->title;
+    }
 
-        return (is_null($this->parent_id)) ? 'ندارد': $this-> parentCategory->title;
-     }
-     public function parentCategory()
+    public function parentCategory()
      {
         return $this->belongsTo(Category::class,'parent_id');
      }

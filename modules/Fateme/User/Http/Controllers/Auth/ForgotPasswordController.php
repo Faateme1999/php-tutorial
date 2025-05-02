@@ -6,6 +6,7 @@ namespace Fateme\User\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Fateme\User\Repositories\UserRepo;
 use Fateme\User\Requests\ResetPasswordVerifyCodeRequest;
+use Fateme\User\Requests\SendResetPasswordVerifyCodeRequest;
 use Fateme\User\Requests\VerifyCodeRequest;
 use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
@@ -31,21 +32,16 @@ class ForgotPasswordController extends Controller
         return view('User::Front.passwords.email');
     }
 
-    public function sendVerifyCodeEmail(SendResetPasswordVerifyCodeRequest $request)
+    public function sendVerifyCodeEmail(SendResetPasswordVerifyCodeRequest $request, UserRepo $userRepo)
     {
-//          check if exists in database
-
-        $user= resolve(UserRepo::class)->findByEmail($request->email);
-//        $user= (new UserRepo())->findByEmail($request->email);
-
-//             if true send email
-
-        if($user && !VerifyCodeService::has($user->id)){
-              $user->sendResetPasswordRequestNotification();
+        $user = $userRepo->findByEmail($request->email);
+//        VerifyCodeService::delete($user->id);
+        if ($user) {
+            $user->sendResetPasswordRequestNotification();
         }
-//        if false  view verifyCodeForm
 
         return view('User::Front.passwords.enter-verify-code-form');
+
     }
 
     public function checkVerifyCode(ResetPasswordVerifyCodeRequest $request)

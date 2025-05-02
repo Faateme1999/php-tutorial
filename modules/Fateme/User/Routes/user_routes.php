@@ -16,8 +16,8 @@ Route::group([
    Route::get(uri:'/email/verify',action:'Auth\VerificationController@show')->name('verification.notice');
 
 //   login
-   Route::get(uri:'/login',action:'Auth\LoginController@showLoginForm')->name('login');
-   Route::post(uri:'/login',action:'Auth\LoginController@login')->name('login');
+   Route::get(uri:'/login',action:'Auth\LoginController@showLoginForm')->name('login.show');
+   Route::post(uri:'/login',action:'Auth\LoginController@login')->name('login.submit');
 
 
 //   logout
@@ -36,8 +36,8 @@ Route::group([
 
 
 //   register
-   Route::get(uri:'/register',action:'Auth\RegisterController@showRegistrationForm')->name('register');
-   Route::post(uri:'/register',action:'Auth\RegisterController@register')->name('register');
+   Route::get(uri:'/register',action:'Auth\RegisterController@showRegistrationForm')->name('register.show');
+   Route::post(uri:'/register',action:'Auth\RegisterController@register')->name('register.submit');
 
 
 

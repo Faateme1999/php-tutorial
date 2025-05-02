@@ -50,7 +50,7 @@ class VerifyCodeService
 
     public static function check($id, $code)
     {
-        if (self::get($id) !== $code) return false;
+        if (self::get($id) != $code) return false;
         self::delete($id);
         return true;
     }

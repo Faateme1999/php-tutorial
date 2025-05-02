@@ -4,41 +4,47 @@ namespace Fateme\Category\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Fateme\Category\Http\Requests\CategoryRequest;
 use Fateme\Category\Models\Category;
+use Fateme\Category\Repositories\CategoryRepo;
+use Fateme\Category\Responses\AjaxResponses;
 
 class CategoryController  extends Controller
 {
+    public $repo;
+    public function __construct(CategoryRepo $categoryRepo)
+    {
+        $this->repo = $categoryRepo;
+    }
 
     public function index()
     {
-        $categories = Category::all();
+//        dd(auth()->user()->permissions);
+        $categories = $this->repo->all();
         return view('Categories::index', compact('categories'));
+
     }
 
     public function store(CategoryRequest $request)
     {
-        Category::create([
-                'title'=>$request->title,
-                'slug'=>$request->slug,
-                'parent_id'=>$request->parent_id,
-            ]);
-
+         $this->repo->store($request);
             return back();
     }
 
-    public function edit(Category $category)
+    public function edit($categoryId)
     {
-        $categories = Category::where('id','!=','$category->id')->get();
+        $category = $this->repo->findById($categoryId);
+        $categories = $this->repo->allExceptById($categoryId);
         return view('Categories::edit', compact('category', 'categories'));
     }
 
-    public function update(CategoryRequest $request, Category $category)
+    public function update($categoryId, CategoryRequest $request)
     {
-        $category->update([
-            'title'=>$request->title,
-            'slug'=>$request->slug,
-            'parent_id'=>$request->parent_id,
-        ]);
-
+        $this->repo->update($categoryId, $request);
         return back();
+    }
+
+    public function destroy($categoryId)
+    {
+        $this->repo->delete($categoryId);
+       return AjaxResponses::SuccessResponse();
     }
 }

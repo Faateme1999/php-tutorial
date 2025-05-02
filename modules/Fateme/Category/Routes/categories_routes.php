@@ -1,7 +1,9 @@
 <?php
 
-Route::group(["namespace"=>"Fateme\Category\Http\Controllers",'middleware'=>[]], function ($router) {
+
+Route::group(["namespace"=>"Fateme\Category\Http\Controllers",
+    'middleware'=>['web','auth','verified','permission:manage_categories']], function ($router) {
    $router->resource('categories', 'CategoryController');
 });
 
-//['web','auth','verified']
+

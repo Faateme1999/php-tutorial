@@ -14,4 +14,20 @@ class CategoryServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
+    public function boot()
+    {
+        $this->app->booted(function () {
+            config()->set('sidebar.items.categories', [
+                "icon" => "i-categories",
+                "title" => "دسته بندی ها",
+                "url" => route('categories.index')
+            ]);
+        });
+//        config()->set('sidebar.items.categories', [
+//            "icon" => "i-categories",
+//            "title" => "دسته بندی ها",
+//            "url" => route('categories.index')
+//        ]);
+    }
+
 }
