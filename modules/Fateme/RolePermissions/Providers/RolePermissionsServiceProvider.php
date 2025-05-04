@@ -4,6 +4,8 @@ namespace Fateme\RolePermissions\Providers;
 use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
 use Fateme\RolePermissions\Models\Permission;
 use Database\Seeders\DatabaseSeeder;
+use Fateme\RolePermissions\Models\Role;
+use Fateme\RolePermissions\Policies\RolePermissionPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +19,7 @@ class RolePermissionsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/Views/', 'RolePermissions');
         $this->loadJsonTranslationsFrom(__DIR__.'/../Resources/Lang');
         DatabaseSeeder::$seeders[] = RolePermissionTableSeeder::class;
-//        Gate::policy(Role::class, RolePermissionPolicy::class);
+        Gate::policy(Role::class, RolePermissionPolicy::class);
         Gate::before(function ($user) {
             return $user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN) ? true : null;
         });

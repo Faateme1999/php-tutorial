@@ -2,14 +2,17 @@
 
 namespace Fateme\RolePermissions\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Fateme\Category\Responses\AjaxResponses;
 use Fateme\RolePermissions\Http\Requests\RoleRequest;
+use Fateme\RolePermissions\Http\Requests\RoleUpdateRequest;
+use Fateme\RolePermissions\Models\Role;
 use Fateme\RolePermissions\Repositories\RoleRepo;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+
 use Fateme\RolePermissions\Repositories\PermissionRepo;
 
 
-class RolePermissionsController
+class RolePermissionsController extends Controller
 {
     private $roleRepo;
 
@@ -23,7 +26,7 @@ class RolePermissionsController
 
     public function index()
     {
-//        $this->authorize('index', Role::class);
+        $this->authorize('index', Role::class);
         $roles = $this->roleRepo->all();
         $permissions = $this->permissionRepo->all();
 
