@@ -1,8 +1,8 @@
 <?php
 
 namespace Fateme\Course\Database\Seeds;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Fateme\RolePermissions\Models\Permission;
+use Fateme\RolePermissions\Models\Role;
 use Illuminate\Database\Seeder;
 
 

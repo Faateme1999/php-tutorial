@@ -1,11 +1,10 @@
 <?php
 namespace Fateme\RolePermissions\Providers;
 
-use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
+use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
 use Fateme\RolePermissions\Models\Permission;
-use Fateme\RolePermissions\Models\Role;
-use Fateme\RolePermissions\Policies\RolePermissionPolicy;
 use Database\Seeders\DatabaseSeeder;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -19,9 +18,9 @@ class RolePermissionsServiceProvider extends ServiceProvider
         $this->loadJsonTranslationsFrom(__DIR__.'/../Resources/Lang');
         DatabaseSeeder::$seeders[] = RolePermissionTableSeeder::class;
 //        Gate::policy(Role::class, RolePermissionPolicy::class);
-//        Gate::before(function ($user) {
-//            return $user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN) ? true : null;
-//        });
+        Gate::before(function ($user) {
+            return $user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN) ? true : null;
+        });
     }
 
     public function boot()

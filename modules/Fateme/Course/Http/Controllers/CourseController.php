@@ -17,7 +17,7 @@ class CourseController extends Controller
 
     public function index(CourseRepo $courseRepo)
     {
-//        $this->authorize('index', Course::class);
+        $this->authorize('index', Course::class);
 //        if (auth()->user()->hasAnyPermission([Permission::PERMISSION_MANAGE_COURSES, Permission::PERMISSION_SUPER_ADMIN])) {
             $courses = $courseRepo->paginate();
 //        } else {
@@ -28,7 +28,7 @@ class CourseController extends Controller
     }
     public function create(UserRepo $userRepo,CategoryRepo $categoryRepo)
     {
-//        $this->authorize('create', Course::class);
+        $this->authorize('create', Course::class);
         $teachers = $userRepo->getTeachers();
         $categories = $categoryRepo->all();
 
@@ -53,7 +53,7 @@ class CourseController extends Controller
     public function edit($id, CourseRepo $courseRepo, UserRepo $userRepo, CategoryRepo $categoryRepo)
     {
         $course = $courseRepo->findByid($id);
-//        $this->authorize('edit', $course);
+        $this->authorize('edit', $course);
         $teachers = $userRepo->getTeachers();
         $categories = $categoryRepo->all();
 
@@ -63,7 +63,7 @@ class CourseController extends Controller
     public function update($id, CourseRequest $request, CourseRepo $courseRepo)
     {
         $course = $courseRepo->findByid($id);
-//        $this->authorize('edit', $course);
+        $this->authorize('edit', $course);
         if ($request->hasFile('image')) {
             $request->request->add(['banner_id' => MediaFileService::publicUpload($request->file('image'))->id]);
             if ($course->banner) {
@@ -81,7 +81,7 @@ class CourseController extends Controller
     public function destroy($id, CourseRepo $courseRepo)
     {
         $course = $courseRepo->findByid($id);
-//        $this->authorize('delete', $course);
+        $this->authorize('delete', $course);
         if ($course->banner) {
             $course->banner->delete();
         }
@@ -92,7 +92,7 @@ class CourseController extends Controller
 
     public function accept($id, CourseRepo $courseRepo)
     {
-//        $this->authorize('change_confirmation_status', Course::class);
+        $this->authorize('change_confirmation_status', Course::class);
         if ($courseRepo->updateConfirmationStatus($id, Course::CONFIRMATION_STATUS_ACCEPTED)) {
             return AjaxResponses::SuccessResponse();
         }
@@ -102,7 +102,7 @@ class CourseController extends Controller
 
     public function reject($id, CourseRepo $courseRepo)
     {
-//        $this->authorize('change_confirmation_status', Course::class);
+        $this->authorize('change_confirmation_status', Course::class);
         if ($courseRepo->updateConfirmationStatus($id, Course::CONFIRMATION_STATUS_REJECTED)) {
             return AjaxResponses::SuccessResponse();
         }
@@ -112,7 +112,7 @@ class CourseController extends Controller
 
     public function lock($id, CourseRepo $courseRepo)
     {
-//        $this->authorize('change_confirmation_status', Course::class);
+        $this->authorize('change_confirmation_status', Course::class);
         if ($courseRepo->updateStatus($id, Course::STATUS_LOCKED)) {
             return AjaxResponses::SuccessResponse();
         }

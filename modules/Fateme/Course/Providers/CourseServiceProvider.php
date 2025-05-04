@@ -3,6 +3,9 @@
 namespace Fateme\Course\Providers;
 
 use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
+use Fateme\Course\Models\Course;
+use Fateme\Course\Policies\CoursePolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Database\Seeders\DatabaseSeeder;
 
@@ -18,6 +21,7 @@ class CourseServiceProvider extends ServiceProvider
         $this->loadJsonTranslationsFrom(__DIR__.'/../Resources/Lang/');
         $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang/', 'Courses');
         \Database\Seeders\DatabaseSeeder::$seeders[] = RolePermissionTableSeeder::class;
+        Gate::policy(Course::class, CoursePolicy::class);
 
     }
 

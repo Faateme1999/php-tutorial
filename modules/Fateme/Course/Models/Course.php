@@ -2,6 +2,7 @@
 
 namespace Fateme\Course\Models;
 
+use Fateme\Category\Models\Category;
 use Fateme\Media\Models\Media;
 use Fateme\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -41,4 +42,8 @@ class Course extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

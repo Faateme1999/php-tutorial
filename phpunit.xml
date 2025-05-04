@@ -22,6 +22,9 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./modules/Fateme/Category/Tests/Feature</directory>
         </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./modules/Fateme/Course/Tests/Feature</directory>
+        </testsuite>
 
     </testsuites>
     <source>
