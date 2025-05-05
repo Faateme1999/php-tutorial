@@ -2,13 +2,14 @@
 
 namespace Fateme\RolePermissions\Tests\Feature;
 
-use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
+use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Fateme\RolePermissions\Models\Permission;
 use Fateme\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Spatie\Permission\Contracts\Role;
 use Tests\TestCase;
+
 class RolesTest  extends TestCase
 {
     use WithFaker;

@@ -170,10 +170,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         UserServiceProvider::class,
+        Fateme\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Fateme\User\Providers\UserServiceProvider::class,
         Fateme\Dashboard\Providers\DashboardServiceProvider::class,
         Fateme\Category\Providers\CategoryServiceProvider::class,
-        Fateme\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Fateme\Course\Providers\CourseServiceProvider::class,
         Fateme\Media\Providers\MediaServiceProvider::class,
 

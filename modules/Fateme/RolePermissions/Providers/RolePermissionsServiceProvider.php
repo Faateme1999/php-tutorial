@@ -1,9 +1,9 @@
 <?php
 namespace Fateme\RolePermissions\Providers;
 
-use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
-use Fateme\RolePermissions\Models\Permission;
 use Database\Seeders\DatabaseSeeder;
+use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
+use Fateme\RolePermissions\Models\Permission;
 use Fateme\RolePermissions\Models\Role;
 use Fateme\RolePermissions\Policies\RolePermissionPolicy;
 use Illuminate\Support\Facades\Gate;
@@ -32,7 +32,6 @@ class RolePermissionsServiceProvider extends ServiceProvider
             'icon' => 'i-role-permissions',
             'title' => 'نقشهای کاربری',
             'url' => route('role-permissions.index'),
-//            'permission' => Permission::PERMISSION_MANAGE_ROLE_PERMISSIONS,
      ]);
         });
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8516beaf4c9eb882f34beae67a628c2",
+    "content-hash": "933e5efbc1ec7f1806f4a4525d721bcb",
     "packages": [
         {
             "name": "brick/math",
@@ -509,6 +509,34 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "fateme/common",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Fateme/Common",
+                "reference": "8caa8b57527e1a9810fc28a6787ec30c9609767b"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\Fateme\\Common\\Providers\\CommonServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fateme\\Common\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "fruitcake/php-cors",
@@ -8488,7 +8516,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "fateme/common": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

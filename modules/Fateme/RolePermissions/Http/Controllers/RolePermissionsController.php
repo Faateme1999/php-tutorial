@@ -2,14 +2,14 @@
 
 namespace Fateme\RolePermissions\Http\Controllers;
 
+
 use App\Http\Controllers\Controller;
-use Fateme\Category\Responses\AjaxResponses;
 use Fateme\RolePermissions\Http\Requests\RoleRequest;
 use Fateme\RolePermissions\Http\Requests\RoleUpdateRequest;
 use Fateme\RolePermissions\Models\Role;
-use Fateme\RolePermissions\Repositories\RoleRepo;
-
 use Fateme\RolePermissions\Repositories\PermissionRepo;
+use Fateme\RolePermissions\Repositories\RoleRepo;
+use Responses\AjaxResponses;
 
 
 class RolePermissionsController extends Controller

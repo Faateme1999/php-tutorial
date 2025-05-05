@@ -4,12 +4,12 @@ namespace Fateme\Course\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Fateme\Category\Repositories\CategoryRepo;
-use Fateme\Category\Responses\AjaxResponses;
 use Fateme\Course\Http\Requests\CourseRequest;
 use Fateme\Course\Models\Course;
 use Fateme\Course\Repositories\CourseRepo;
 use Fateme\Media\Services\MediaFileService;
 use Fateme\User\Repositories\UserRepo;
+use Responses\AjaxResponses;
 
 
 class CourseController extends Controller
@@ -106,7 +106,6 @@ class CourseController extends Controller
         if ($courseRepo->updateConfirmationStatus($id, Course::CONFIRMATION_STATUS_REJECTED)) {
             return AjaxResponses::SuccessResponse();
         }
-
         return AjaxResponses::FailedResponse();
     }
 
@@ -116,7 +115,6 @@ class CourseController extends Controller
         if ($courseRepo->updateStatus($id, Course::STATUS_LOCKED)) {
             return AjaxResponses::SuccessResponse();
         }
-
         return AjaxResponses::FailedResponse();
     }
 

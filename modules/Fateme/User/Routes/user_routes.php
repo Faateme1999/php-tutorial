@@ -11,6 +11,12 @@ Route::group([
     'namespace' => 'Fateme\User\Http\Controllers',
     'middleware'=>'web'
 ], function ($router) {
+    Route::resource('users', 'UserController');
+    Route::post('users/{user}/add/role', 'UserController@addRole')->name('users.addRole');
+    Route::delete('users/{user}/remove/{role}/role', 'UserController@removeRole')->name('users.removeRole');
+    Route::patch('users/{user}/manualVerify/', 'UserController@manualVerify')->name('users.manualVerify');
+
+
    Route::post(uri:'/email/verify',action:'Auth\VerificationController@verify')->name('verification.verify');
    Route::post(uri:'/email/resend',action:'Auth\VerificationController@resend')->name('verification.resend');
    Route::get(uri:'/email/verify',action:'Auth\VerificationController@show')->name('verification.notice');

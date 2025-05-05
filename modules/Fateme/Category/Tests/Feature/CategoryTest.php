@@ -3,13 +3,13 @@
 namespace Fateme\Category\Tests\Feature;
 
 use Fateme\Category\Models\Category;
-use Fateme\Course\Database\Seeds\RolePermissionTableSeeder;
+use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Fateme\RolePermissions\Models\Permission;
 use Fateme\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Spatie\Permission\Contracts\Role;
 use Tests\TestCase;
+
 class CategoryTest  extends TestCase
 {
     use WithFaker;

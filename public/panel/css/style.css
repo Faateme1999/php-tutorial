@@ -1891,7 +1891,7 @@ span.tagRemove:hover {
 .w-100{
     width: 100%;
 }
-.text{
+.text, .dropdown-select{
     margin-bottom: 0;
     margin-top: 15px;
 }
@@ -1901,4 +1901,7 @@ span.tagRemove:hover {
 
 .mb-0{
     margin-bottom: 0;
+}
+.deleteable-list-item:hover .item-delete{
+display: inline-block;
 }

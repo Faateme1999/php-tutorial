@@ -4,6 +4,7 @@ namespace Fateme\User\Models;
 
 
 
+use Fateme\RolePermissions\Models\Role;
 use Fateme\User\Notifications\ResetPasswordRequestNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Fateme\User\Notifications\VerifyMailNotification;
@@ -18,6 +19,24 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
 
+
+    const STATUS_ACTIVE = "active";
+    const STATUS_INACTIVE = "inactive";
+    const STATUS_BAN = "ban";
+    public static $statuses = [
+        self::STATUS_ACTIVE,
+        self::STATUS_INACTIVE,
+        self::STATUS_BAN
+    ];
+
+    public static $defaultUsers = [
+        [
+            'email' => 'admin@admin.com',
+            'password' => 'admin',
+            'name' => 'Admin',
+            'role' => Role::ROLE_SUPER_ADMIN
+        ],
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -65,5 +84,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function newFactory()
     {
         return \Fateme\User\Database\Factories\UserFactory::new();
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Media::class, 'image_id');
     }
 }
