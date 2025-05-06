@@ -4,6 +4,7 @@ namespace Fateme\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Fateme\Media\Services\MediaFileService;
+use Fateme\RolePermissions\Models\Role;
 use Fateme\RolePermissions\Repositories\RoleRepo;
 use Fateme\User\Http\Requests\AddRoleRequest;
 use Fateme\User\Http\Requests\UpdateUserRequest;
@@ -33,11 +34,12 @@ class UserController extends Controller
         $roles = $roleRepo->all();
         return view("User::Admin.index", compact('users', 'roles'));
     }
-    public function edit($userId)
+    public function edit($userId, RoleRepo $roleRepo)
     {
         $this->authorize('edit', User::class);
         $user = $this->userRepo->findById($userId);
-        return view("User::Admin.edit", compact('user'));
+        $roles = $roleRepo->all();
+        return view("User::Admin.edit", compact('user', 'roles'));
     }
 
     public function update(UpdateUserRequest $request, $userId)

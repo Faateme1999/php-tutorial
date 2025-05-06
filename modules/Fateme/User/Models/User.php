@@ -4,6 +4,8 @@ namespace Fateme\User\Models;
 
 
 
+use Fateme\Course\Models\Course;
+use Fateme\Media\Models\Media;
 use Fateme\RolePermissions\Models\Role;
 use Fateme\User\Notifications\ResetPasswordRequestNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -89,5 +91,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function image()
     {
         return $this->belongsTo(Media::class, 'image_id');
+    }
+
+    public function courses()
+    {
+       return $this->hasMany(Course::class,'teacher_id');
     }
 }

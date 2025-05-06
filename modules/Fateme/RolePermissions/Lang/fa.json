@@ -1,14 +1,14 @@
 {
-    "manage categories" : "مدیریت دسته بندی",
-    "manage role_permissions" : "مدیریت نقشهای کاربری",
-    "manage courses" : "مدیریت دوره ها",
-    "manage users" : "مدیریت کاربران",
+    "manage_categories" : "مدیریت دسته بندی",
+    "manage_role_permissions" : "مدیریت نقشهای کاربری",
+    "manage_courses" : "مدیریت دوره ها",
+    "manage_users" : "مدیریت کاربران",
     "teach" : "تدریس",
-    "manage own courses" : "مدیریت دوره های خود",
+    "manage_own_courses" : "مدیریت دوره های خود",
     "teacher": "مدرس",
     "student": "دانشجو",
-    "super admin" : "مدیرکل",
-    "manage payments": "مدیریت تراکنش ها",
-    "manage settlements": "مدیریت درخواست های تسویه",
-    "manage discounts": "مدیریت تخفیف ها"
+    "super_admin" : "مدیرکل",
+    "manage_payments": "مدیریت تراکنش ها",
+    "manage_settlements": "مدیریت درخواست های تسویه",
+    "manage_discounts": "مدیریت تخفیف ها"
 }
