@@ -4,13 +4,11 @@
 namespace Fateme\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Fateme\User\Http\Requests\ResetPasswordVerifyCodeRequest;
+use Fateme\User\Http\Requests\SendResetPasswordVerifyCodeRequest;
 use Fateme\User\Repositories\UserRepo;
-use Fateme\User\Requests\ResetPasswordVerifyCodeRequest;
-use Fateme\User\Requests\SendResetPasswordVerifyCodeRequest;
-use Fateme\User\Requests\VerifyCodeRequest;
 use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {

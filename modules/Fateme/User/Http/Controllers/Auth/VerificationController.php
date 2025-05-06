@@ -5,7 +5,7 @@ namespace Fateme\User\Http\Controllers\Auth;
 
 
 use App\Http\Controllers\Controller;
-use Fateme\User\Requests\VerifyCodeRequest;
+use Fateme\User\Http\Requests\VerifyCodeRequest;
 use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;

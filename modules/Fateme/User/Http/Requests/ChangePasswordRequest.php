@@ -1,17 +1,18 @@
 <?php
 
-namespace Fateme\User\Requests;
+namespace Fateme\User\Http\Requests;
 
+use Fateme\User\Rules\validPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SendResetPasswordVerifyCodeRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return auth()->check() == true;
     }
 
     /**
@@ -22,7 +23,7 @@ class SendResetPasswordVerifyCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+                'password' => ['required',new ValidPassword(),'confirmed']
         ];
     }
 }

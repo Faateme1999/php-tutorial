@@ -1,11 +1,10 @@
 <?php
 
-namespace Fateme\User\Requests;
+namespace Fateme\User\Http\Requests;
 
-use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Http\FormRequest;
 
-class VerifyCodeRequest extends FormRequest
+class SendResetPasswordVerifyCodeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +22,7 @@ class VerifyCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'verify_code'=>VerifyCodeService::getRule(),
+            'email' => 'required|email',
         ];
     }
 }

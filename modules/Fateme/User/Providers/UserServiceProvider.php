@@ -29,14 +29,18 @@ class UserServiceProvider extends ServiceProvider
     {
        /*dd('bar aye test service');*/
         config()->set('sidebar.items.users', [
-            'icon' => 'i-users',
-            'title' => 'کاربران',
-            'url' => url('/users'),
-
-//            'url' => route('users.index'),
-//            'permission' => Permission::PERMISSION_MANAGE_USERS,
+            "icon" => "i-users",
+            "title" => "کاربران",
+            "url" => route('users.index')
         ]);
 
+        $this->app->booted(function () {
+            config()->set('sidebar.items.users', [
+                "icon" => "i-user__inforamtion",
+                "title" => "اطلاعات کاربری",
+                "url" => route('users.profile')
+            ]);
+        });
     }
-
 }
+

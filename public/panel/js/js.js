@@ -263,5 +263,4 @@ function updateConfirmationStatus(event, route, message, status, field = 'confir
                     })
                 })
         }
-    }
 }

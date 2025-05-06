@@ -4,9 +4,10 @@ namespace Fateme\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Fateme\Media\Services\MediaFileService;
-use Fateme\RolePermissions\Models\Role;
 use Fateme\RolePermissions\Repositories\RoleRepo;
 use Fateme\User\Http\Requests\AddRoleRequest;
+use Fateme\User\Http\Requests\UpdateProfileInformationRequest;
+use Fateme\User\Http\Requests\UpdateUserPhoto;
 use Fateme\User\Http\Requests\UpdateUserRequest;
 use Fateme\User\Models\User;
 use Fateme\User\Repositories\UserRepo;
@@ -60,6 +61,34 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function updatePhoto(UpdateUserPhoto $request)
+    {
+        $this->authorize('editProfile', User::class);
+        $media = MediaFileService::upload($request->file('userPhoto'));
+        if (auth()->user()->image) auth()->user()->image->delete();
+        auth()->user()->image_id = $media->id;
+        auth()->user()->save();
+        newFeedback();
+
+        return back();
+    }
+
+    public function profile()
+    {
+        $this->authorize('editProfile', User::class);
+        return view('User::admin.profile');
+    }
+
+
+    public function updateProfile(UpdateProfileInformationRequest $request)
+    {
+        $this->authorize('editProfile', User::class);
+        $this->userRepo->updateProfile($request);
+        newFeedback();
+        return back();
+
+    }
+
 
     public function destroy($userId)
     {
@@ -91,4 +120,5 @@ class UserController extends Controller
         $user->removeRole($role);
         return AjaxResponses::SuccessResponse();
     }
+
 }
