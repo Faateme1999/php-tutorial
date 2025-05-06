@@ -78,6 +78,14 @@ class CourseController extends Controller
     }
 
 
+    public function details($id, CourseRepo $courseRepo)
+    {
+        $course = $courseRepo->findByid($id);
+        return view('Courses::details', compact('course'));
+
+    }
+
+
     public function destroy($id, CourseRepo $courseRepo)
     {
         $course = $courseRepo->findByid($id);

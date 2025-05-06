@@ -5,6 +5,7 @@ namespace Fateme\User\Models;
 
 
 use Fateme\Course\Models\Course;
+use Fateme\Course\Models\Season;
 use Fateme\Media\Models\Media;
 use Fateme\RolePermissions\Models\Role;
 use Fateme\User\Notifications\ResetPasswordRequestNotification;
@@ -96,6 +97,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function courses()
     {
        return $this->hasMany(Course::class,'teacher_id');
+    }
+
+    public function seasons()
+    {
+        return $this->hasMany(Season::class);
     }
 
     public function profilePath()
