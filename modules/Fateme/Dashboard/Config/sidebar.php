@@ -3,8 +3,10 @@
 return [
     'items'=>[
           'dashboard'=>[],
+          'courses'=>[],
           'categories'=>[],
-          'role-permissions'=>[],
           'users'=>[],
+        'role-permissions'=>[],
+          'usersInformation'=>[],
     ]
 ];

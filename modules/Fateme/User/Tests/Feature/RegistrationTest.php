@@ -2,6 +2,7 @@
 
 namespace Fateme\User\Tests\Feature;
 
+use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
 use Fateme\User\Models\User;
 use Fateme\User\Services\VerifyCodeService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -56,10 +57,9 @@ $response->assertStatus(200);
         $this->assertEquals(true,$user->fresh()->hasVerifiedEmail());
     }
 
-
-
     public function test_verified_user_can_see_home_page()
     {
+        $this->seed(RolePermissionTableSeeder::class);
         $this->registerNewUser();
         $this->assertAuthenticated();
         auth()->user()->markEmailAsVerified();
@@ -67,7 +67,6 @@ $response->assertStatus(200);
         $response=$this->get(route('home'));
         $response->assertOk();
     }
-
     /**
      * @returnvoid
      */

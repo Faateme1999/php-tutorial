@@ -1,9 +1,11 @@
+{{--{{ dd(auth()->user()->image) }}--}}
 
 <form action="{{ route('users.photo') }}" method="post" enctype="multipart/form-data">
     <div class="profile__info border cursor-pointer text-center">
         @csrf
         <div class="avatar__img">
-            <img src="{{ auth()->user()->image->thumb }}" class="avatar___img">
+{{--            <img src="{{ optional(auth()->user()->image)->thumb ?? 'default-avatar.jpg' }}" class="avatar___img">--}}
+            <img src="{{ auth()->user()->thumb }}" class="avatar___img">
             <input type="file" accept="image/*" class="hidden avatar-img__input" name="userPhoto"
                    onchange="this.form.submit()"
             >

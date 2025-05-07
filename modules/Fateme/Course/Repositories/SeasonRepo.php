@@ -16,6 +16,7 @@ class SeasonRepo
             'title' => $values->title,
             'number' => $this->generateNumber($values->number, $id),
             'confirmation_status' => Season::CONFIRMATION_STATUS_PENDING,
+            'status'=>Season::STATUS_OPENED
         ]);
     }
 
@@ -39,12 +40,12 @@ class SeasonRepo
 
     public function updateConfirmationStatus($id, string $status)
     {
-        return Course::where('id', $id)->update(['confirmation_status'=> $status]);
+        return Season::where('id', $id)->update(['confirmation_status'=> $status]);
     }
 
     public function updateStatus($id, string $status)
     {
-        return Course::where('id', $id)->update(['status'=> $status]);
+        return Season::where('id', $id)->update(['status'=> $status]);
     }
 
     public function generateNumber($number, $courseId): int

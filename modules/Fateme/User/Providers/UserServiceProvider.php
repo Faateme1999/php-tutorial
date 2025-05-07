@@ -3,6 +3,7 @@
 namespace Fateme\User\Providers;
 
 use Database\Seeders\DatabaseSeeder;
+use Fateme\RolePermissions\Models\Permission;
 use Fateme\User\Database\Seeds\UsersTableSeeder;
 use Fateme\User\Http\Middleware\StoreUserIp;
 use Fateme\User\Models\User;
@@ -31,16 +32,18 @@ class UserServiceProvider extends ServiceProvider
         config()->set('sidebar.items.users', [
             "icon" => "i-users",
             "title" => "کاربران",
-            "url" => url('users.index')
+            "url" => route('users.index'),
+            "permission" => Permission::PERMISSION_MANAGE_USERS
         ]);
 
         $this->app->booted(function () {
-            config()->set('sidebar.items.users', [
+            config()->set('sidebar.items.usersInformation', [
                 "icon" => "i-user__inforamtion",
                 "title" => "اطلاعات کاربری",
-                "url" => url('users.profile')
+                "url" => route('users.profile')
             ]);
         });
     }
+
 }
 

@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     protected $casts = [
-        'files' => 'json',
+        'files' => 'json'
     ];
 
-    protected static function booted()
-    {
+    protected static function booted(){
         static::deleting(function ($media) {
             MediaFileService::delete($media);
         });
@@ -20,7 +19,6 @@ class Media extends Model
 
     public function getThumbAttribute()
     {
-        return MediaFileService::thumb($this);
+        return '/storage/' .  $this->files[300];
     }
-
 }

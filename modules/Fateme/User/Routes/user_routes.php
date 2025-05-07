@@ -15,7 +15,7 @@ Route::group([
     Route::patch('users/{user}/manualVerify', 'UserController@manualVerify')->name('users.manualVerify');
     Route::post('users/photo', 'UserController@updatePhoto')->name('users.photo');
     Route::get('users/profile', 'UserController@profile')->name('users.profile');
-    Route::post('users/profile', 'UserController@updateProfile')->name('users.profile');
+    Route::post('users/profile', 'UserController@updateProfile')->name('users.profile.update');
     Route::get('tutors/{username}', "UserController@viewPofile")->name('viewProfile');
     Route::resource('users', 'UserController');
 

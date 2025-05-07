@@ -29,7 +29,7 @@
 
             </div>
             <div class="form-footer">
-                <a href="{{ route('register') }}">صفحه ثبت نام</a>
+                <a href="{{ route('register.show') }}">صفحه ثبت نام</a>
             </div>
         </form>
 

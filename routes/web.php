@@ -4,6 +4,7 @@ namespace Fateme\RolePermissions\Repositories;
 use Fateme\RolePermissions\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -13,6 +14,7 @@ Route::get('/test', function () {
 auth()->user()->givePermissionTo(Permission::PERMISSION_MANAGE_COURSES);
 return auth()->user()->permissions;
 });
+
 
 
 

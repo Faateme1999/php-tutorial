@@ -30,7 +30,7 @@ class UserController extends Controller
 //            dd('کاربر وارد نشده است');
 //        }
 
-        $this->authorize('addRole', User::class);
+        $this->authorize('index', User::class);
         $users = $this->userRepo->paginate();
         $roles = $roleRepo->all();
         return view("User::Admin.index", compact('users', 'roles'));

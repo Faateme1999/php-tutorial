@@ -1,9 +1,10 @@
 <?php
 
 namespace Fateme\RolePermissions\Database\Seeds;
-use Fateme\RolePermissions\Models\Permission;
-use Fateme\RolePermissions\Models\Role;
+
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 
 class RolePermissionTableSeeder extends Seeder
@@ -13,6 +14,11 @@ class RolePermissionTableSeeder extends Seeder
      */
     public function run()
     {
+//        $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
+//        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+//
+//        $permissions = Permission::all();
+//        $superAdminRole->givePermissionTo($permissions);
 
         foreach (\Fateme\RolePermissions\Models\Permission::$permissions as $permission) {
             Permission::findOrCreate($permission);
@@ -21,6 +27,16 @@ class RolePermissionTableSeeder extends Seeder
         foreach (\Fateme\RolePermissions\Models\Role::$roles as $name => $permissions) {
             Role::findOrCreate($name)->givePermissionTo($permissions);
         }
+
+//        foreach (\Fateme\RolePermissions\Models\Permission::$permissions as $permission) {
+//            \Fateme\RolePermissions\Models\Permission::firstOrCreate(['name' => $permission]);
+//        }
+//        foreach (\Fateme\RolePermissions\Models\Role::$roles as $name => $permissions) {
+//            $role = Role::firstOrCreate(['name' => $name]);  // یا findOrCreate بسته به پیاده‌سازی شما
+//            $role->givePermissionTo($permissions);
+//        }
+
+
     }
 //    public function run()
 //    {

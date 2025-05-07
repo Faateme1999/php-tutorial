@@ -1,11 +1,13 @@
 
 <?php
 
+use Fateme\Course\Models\Season;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeasonsTable extends Migration
+
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,8 +24,8 @@ class CreateSeasonsTable extends Migration
             $table->tinyInteger('number')->unsigned();
             $table->enum('confirmation_status', \Fateme\Course\Models\Season::$confirmationStatuses)
                 ->default(\Fateme\Course\Models\Season::CONFIRMATION_STATUS_PENDING);
+            $table->enum('status', \Fateme\Course\Models\Season::$statuses)->default(Season::STATUS_OPENED);
             $table->timestamps();
-
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
@@ -39,4 +41,4 @@ class CreateSeasonsTable extends Migration
     {
         Schema::dropIfExists('seasons');
     }
-}
+};
