@@ -7,6 +7,17 @@ use Fateme\Course\Models\Season;
 
 class SeasonRepo
 {
+    public function getCourseSeasons($course)
+    {
+        return Season::where('course_id', $course)
+            ->where('confirmation_status', Season::CONFIRMATION_STATUS_ACCEPTED)
+            ->orderBy('number')->get();
+    }
+
+    public function findByIdandCourseId($seasonId, $courseId)
+    {
+        return Season::where('course_id', $courseId)->where('id', $seasonId)->first();
+    }
 
     public function store($id, $values)
     {
@@ -18,11 +29,6 @@ class SeasonRepo
             'confirmation_status' => Season::CONFIRMATION_STATUS_PENDING,
             'status'=>Season::STATUS_OPENED
         ]);
-    }
-
-    public function paginate()
-    {
-        return Course::paginate();
     }
 
     public function findByid($id)

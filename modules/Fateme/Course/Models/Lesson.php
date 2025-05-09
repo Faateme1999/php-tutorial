@@ -2,13 +2,13 @@
 
 namespace Fateme\Course\Models;
 
+use Fateme\Media\Models\Media;
 use Fateme\User\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Season extends Model
+class Lesson extendS Model
 {
-    use HasFactory;
+
     const CONFIRMATION_STATUS_ACCEPTED = 'accepted';
     const CONFIRMATION_STATUS_REJECTED = 'rejected';
     const CONFIRMATION_STATUS_PENDING = 'pending';
@@ -20,18 +20,26 @@ class Season extends Model
 
 
     protected $guarded = [];
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function lessons()
-    {
-        return $this->hasMany(Lesson::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function season()
+    {
+        return $this->belongsTo(Season::class);
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
+
 }
+

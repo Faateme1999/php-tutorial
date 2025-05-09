@@ -11,7 +11,7 @@ use Fateme\User\Http\Requests\UpdateUserPhoto;
 use Fateme\User\Http\Requests\UpdateUserRequest;
 use Fateme\User\Models\User;
 use Fateme\User\Repositories\UserRepo;
-use Responses\AjaxResponses;
+use Fateme\Common\Responses\AjaxResponses;
 
 class UserController extends Controller
 {

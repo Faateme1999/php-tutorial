@@ -2,32 +2,32 @@
 
 namespace Fateme\Media\Services;
 
+use Fateme\Media\Models\Media;
+
 class MediaFileService
 {
-     public static function upload($file)
-{
-      $extension = strtolower($file->getClientOriginalExtension());
-
-      switch ($extension) {
-          case 'jpg':
-          case 'png':
-          case 'jpeg':
-              ImageFileService::upload($file);
-              break;
-          case 'avi':
-          case 'mp4':
-              VideoFileService::upload($file);
-              break;
-      }
-
-}
-
-    public static function delete(Media $media)
+    public static function upload($file)
     {
-        foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
-            if ($media->type == $type) {
-                return $service['handler']::delete($media);
+        $extension = strtolower($file->getClientOriginalExtension());
+        foreach (config('mediaFile.MediaTypeServices') as $key => $service) {
+            if (in_array($extension, $service['extensions'])) {
+                $media = new Media();
+                $media->files = $service["handler"]::upload($file);
+                $media->type = $key;
+                $media->user_id = auth()->id();
+                $media->filename = $file->getClientOriginalName();
+                $media->save();
+                return $media;
             }
+        }
+    }
+
+    public static function delete($media)
+    {
+        switch ($media->type) {
+            case 'image':
+                ImageFileService::delete($media);
+                break;
         }
     }
 }

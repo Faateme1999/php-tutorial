@@ -9,7 +9,7 @@ use Fateme\RolePermissions\Http\Requests\RoleUpdateRequest;
 use Fateme\RolePermissions\Models\Role;
 use Fateme\RolePermissions\Repositories\PermissionRepo;
 use Fateme\RolePermissions\Repositories\RoleRepo;
-use Responses\AjaxResponses;
+use Fateme\Common\Responses\AjaxResponses;
 
 
 class RolePermissionsController extends Controller

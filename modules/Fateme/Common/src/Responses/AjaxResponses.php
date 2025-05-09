@@ -1,6 +1,6 @@
 <?php
 
-namespace Responses;
+namespace Fateme\Common\Responses;
 
 use Illuminate\Http\Response;
 

@@ -27,15 +27,10 @@
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./modules/Fateme/Common/"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Fateme\\Common\\": "modules/Fateme/Common/src/",
             "Fateme\\User\\": "modules/Fateme/User/",
             "Fateme\\Dashboard\\": "modules/Fateme/Dashboard/",
             "Fateme\\Category\\": "modules/Fateme/Category/",

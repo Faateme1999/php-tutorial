@@ -6,7 +6,7 @@ return [
           'courses'=>[],
           'categories'=>[],
           'users'=>[],
-        'role-permissions'=>[],
+          'role-permissions'=>[],
           'usersInformation'=>[],
     ]
 ];

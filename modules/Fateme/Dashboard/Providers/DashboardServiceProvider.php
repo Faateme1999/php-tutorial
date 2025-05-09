@@ -2,7 +2,6 @@
 
 namespace Fateme\Dashboard\Providers;
 
-//use Carbon\Laravel\ServiceProvider;
 use \Illuminate\Support\ServiceProvider;
 
 class DashboardServiceProvider extends ServiceProvider

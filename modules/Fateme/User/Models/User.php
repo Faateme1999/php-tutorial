@@ -5,6 +5,7 @@ namespace Fateme\User\Models;
 
 
 use Fateme\Course\Models\Course;
+use Fateme\Course\Models\Lesson;
 use Fateme\Course\Models\Season;
 use Fateme\Media\Models\Media;
 use Fateme\RolePermissions\Models\Role;
@@ -21,7 +22,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
-
 
     const STATUS_ACTIVE = "active";
     const STATUS_INACTIVE = "inactive";
@@ -102,6 +102,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function seasons()
     {
         return $this->hasMany(Season::class);
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 
     public function profilePath()

@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Fateme\Category\Http\Requests\CategoryRequest;
 use Fateme\Category\Models\Category;
 use Fateme\Category\Repositories\CategoryRepo;
-use Responses\AjaxResponses;
+use Fateme\Common\Responses\AjaxResponses;
 
 class CategoryController  extends Controller
 {

@@ -7,7 +7,7 @@ use Fateme\Course\Http\Requests\SeasonRequest;
 use Fateme\Course\Models\Season;
 use Fateme\Course\Repositories\CourseRepo;
 use Fateme\Course\Repositories\SeasonRepo;
-use Responses\AjaxResponses;
+use Fateme\Common\Responses\AjaxResponses;
 
 class SeasonController extends Controller
 {
