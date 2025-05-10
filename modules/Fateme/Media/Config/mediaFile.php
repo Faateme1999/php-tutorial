@@ -17,7 +17,7 @@ return [
             "extensions" => [
                 "zip", "rar", "tar"
             ],
-            "handler" => \App\ZipFileService::class
+            "handler" => \Fateme\Media\Services\ZipFileService::class
         ]
     ]
 ];
