@@ -3,6 +3,7 @@
 namespace Fateme\Media\Services;
 
 use Fateme\Media\Contracts\FileServiceContract;
+use Fateme\Media\Models\Media;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Laravel\Facades\Image;
@@ -29,5 +30,9 @@ class ImageFileService extends DefaultFileService implements FileServiceContract
             })->save(Storage::path($dir) . $filename . '_'. $size. '.' . $extension);
         }
         return $imgs;
+    }
+    public static function thumb(Media $media)
+    {
+        return "/storage/" . $media->files['300'];
     }
 }

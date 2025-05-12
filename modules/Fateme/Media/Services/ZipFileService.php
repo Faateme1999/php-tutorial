@@ -3,6 +3,7 @@
 namespace Fateme\Media\Services;
 
 use Fateme\Media\Contracts\FileServiceContract;
+use Fateme\Media\Models\Media;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,5 +14,9 @@ class ZipFileService  extends DefaultFileService implements FileServiceContract
     {
         Storage::putFileAs( $dir , $file, $filename . '.' . $file->getClientOriginalExtension());
         return ["zip" => $filename .  '.' . $file->getClientOriginalExtension()];
+    }
+    public static function thumb(Media $media)
+    {
+        return url("/img/zip-thumb.png");
     }
 }

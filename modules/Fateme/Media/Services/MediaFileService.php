@@ -66,4 +66,24 @@ class MediaFileService
         return $media;
     }
 
+    public static function thumb(Media $media)
+    {
+        foreach (config('mediaFile.MediaTypeServices') as $type => $service) {
+            if ($media->type == $type) {
+                return $service['handler']::thumb($media);
+            }
+        }
+    }
+
+    public static function getExtensions()
+    {
+        $extensions = [];
+        foreach (config('mediaFile.MediaTypeServices') as  $service) {
+            foreach ($service['extensions'] as $extension) {
+                $extensions[] = $extension;
+            }
+        }
+        return implode(',', $extensions);
+    }
+
 }

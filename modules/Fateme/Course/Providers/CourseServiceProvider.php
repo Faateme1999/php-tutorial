@@ -3,8 +3,10 @@
 namespace Fateme\Course\Providers;
 
 use Fateme\Course\Models\Course;
+use Fateme\Course\Models\Lesson;
 use Fateme\Course\Models\Season;
 use Fateme\Course\Policies\CoursePolicy;
+use Fateme\Course\Policies\LessonPolicy;
 use Fateme\Course\Policies\SeasonPolicy;
 use Fateme\RolePermissions\Models\Permission;
 use Fateme\RolePermissions\Database\Seeds\RolePermissionTableSeeder;
@@ -25,6 +27,7 @@ class CourseServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang/', 'Courses');
         Gate::policy(Course::class, CoursePolicy::class);
         Gate::policy(Season::class, SeasonPolicy::class);
+        Gate::policy(Lesson::class, LessonPolicy::class);
 
     }
 

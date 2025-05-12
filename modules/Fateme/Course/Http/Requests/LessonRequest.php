@@ -5,6 +5,7 @@ namespace Fateme\Course\Http\Requests;
 use Fateme\Course\Models\Course;
 use Fateme\Course\Rules\ValidSeason;
 use Fateme\Course\Rules\ValidTeacher;
+use Fateme\Media\Services\MediaFileService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -22,16 +23,13 @@ class LessonRequest  extends FormRequest
             "slug" => 'nullable|min:3|max:190',
             "number" => 'nullable|numeric',
             "time" => 'required|numeric|min:0|max:255',
-            "season_id" => [ new ValidSeason() ],
-            "free" => "required|boolean",
+            "season_id" => [new ValidSeason()],
+            "is_free" => "required|boolean",
             "lesson_file" => "required|file|mimes:avi,mkv,mp4,zip,rar",
         ];
-
-//        if (request()->method === 'PATCH') {
-//            $rules['image'] = "nullable|mimes:jpg,png,jpeg";
-//            $rules['slug'] = 'required|min:3|max:190|unique:courses,slug,' . request()->route('course');
-//        }
-
+        if (request()->method === 'PATCH') {
+            $rules['lesson_file'] = 'nullable|file|mimes:' . MediaFileService::getExtensions();
+        }
         return $rules;
     }
 

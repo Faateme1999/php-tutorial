@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('media_id')->unsigned()->nullable();
             $table->string('title');
             $table->string('slug');
-            $table->boolean('free')->default(false);
+            $table->boolean('is_free')->default(false);
             $table->longText('body')->nullable();
             $table->tinyInteger('time')->unsigned()->nullable();
             $table->integer('priority')->unsigned()->nullable();
