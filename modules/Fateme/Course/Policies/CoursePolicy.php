@@ -14,33 +14,35 @@ class CoursePolicy
     /**
      * Create a new policy instance.
      */
+
     public function __construct()
     {
         //
     }
 
-    public function index(User $user)
+    public function manage(User $user)
     {
-//        if (
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES);
-//            ||
-//            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES))
-//        {
-//            return true;
-//        }
+    }
+
+    public function index($user)
+    {
+        return
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
+            $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
     }
 
     public function create($user)
     {
         return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES) ||
             $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES);
-
     }
 
     public function edit($user, $course)
     {
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_COURSES)) return true;
-        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher_id == $user->id;
+
+        return $user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) &&  $course->teacher_id == $user->id;
     }
 
     public function delete($user)
@@ -62,10 +64,9 @@ class CoursePolicy
         }
 
         if ($user->hasPermissionTo(Permission::PERMISSION_MANAGE_OWN_COURSES) && $course->teacher_id == $user->id) {
-            return true;
+            return  true;
         }
     }
-
 
     public function createLesson($user, $course)
     {
@@ -84,4 +85,7 @@ class CoursePolicy
             return true;
         }
     }
+
+
+
 }

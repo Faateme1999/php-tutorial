@@ -1,4 +1,3 @@
-
 @extends('Dashboard::master')
 @section('breadcrumb')
     <li><a href="{{ route('courses.index') }}" title="دوره ها">دوره ها</a></li>
@@ -12,13 +11,14 @@
                 <p class="mlg-15">{{ $course->title }}</p>
                 <a class="color-2b4a83" href="{{ route('lessons.create', $course->id) }}">آپلود جلسه جدید</a>
             </div>
-            <div class="d-flex item-center flex-wrap margin-bottom-15 operations__btns">
-                <button class="btn all-confirm-btn" onclick="acceptAllLessons('{{ route('lessons.acceptAll', $course->id) }}')">تایید همه جلسات</button>
-                <button class="btn confirm-btn" onclick="acceptMultiple('{{ route('lessons.acceptMultiple', $course->id) }}')">تایید جلسات</button>
-                <button class="btn reject-btn" onclick="rejectMultiple('{{ route('lessons.rejectMultiple', $course->id) }}')">رد جلسات</button>
-                <button class="btn delete-btn" onclick="deleteMultiple('{{ route('lessons.destroyMultiple', $course->id) }}')">حذف جلسات</button>
-
-            </div>
+            @can(\Fateme\RolePermissions\Models\Permission::PERMISSION_MANAGE_COURSES)
+                <div class="d-flex item-center flex-wrap margin-bottom-15 operations__btns">
+                    <button class="btn all-confirm-btn" onclick="acceptAllLessons('{{ route('lessons.acceptAll', $course->id) }}')">تایید همه جلسات</button>
+                    <button class="btn confirm-btn" onclick="acceptMultiple('{{ route('lessons.acceptMultiple', $course->id) }}')">تایید جلسات</button>
+                    <button class="btn reject-btn" onclick="rejectMultiple('{{ route('lessons.rejectMultiple', $course->id) }}')">رد جلسات</button>
+                    <button class="btn delete-btn" onclick="deleteMultiple('{{ route('lessons.destroyMultiple', $course->id) }}')">حذف جلسات</button>
+                </div>
+            @endcan
             <div class="table__box">
                 <table class="table">
                     <thead role="rowgroup">
@@ -49,7 +49,7 @@
                             </td>
                             <td><a href="">{{ $lesson->number }}</a></td>
                             <td><a href="">{{ $lesson->title}}</a></td>
-                            <td>{{ $lesson->season->title }}</td>
+                            <td>{{ $lesson->seasson ? $lesson->season->title : '-' }}</td>
                             <td>{{ $lesson->time }} دقیقه </td>
                             <td class="confirmation_status">
                                 <span class="{{ $lesson->getConfirmationStatusCssClass() }}">
@@ -64,23 +64,25 @@
                                 @endif
                             </td>
                             <td>
-                                <a href=""  onclick="deleteItem(event, '{{ route('lessons.destroy',[$course->id ,$lesson->id]) }}')"
-                                   class="item-delete mlg-15" title="حذف"></a>
-                                <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.accept', $lesson->id) }}',
-                                'آیا از تایید این آیتم اطمینان دارید؟' , 'تایید شده')"
-                                   class="item-confirm mlg-15" title="تایید"></a>
-                                <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.reject', $lesson->id) }}',
-                                'آیا از رد این آیتم اطمینان دارید؟' ,'رد شده')"
-                                   class="item-reject mlg-15" title="رد"></a>
-                                @if($lesson->status == \Fateme\Course\Models\Lesson::STATUS_OPENED)
-                                    <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.lock', $lesson->id) }}',
-                                    'آیا از قفل کردن این آیتم اطمینان دارید؟' , 'قفل شده', 'status')"
-                                       class="item-lock text-error mlg-15" title="قفل کردن"></a>
-                                @else
-                                    <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.unlock', $lesson->id) }}',
-                                    'آیا از باز کردن این آیتم اطمینان دارید؟' , 'باز', 'status')"
-                                       class="item-lock mlg-15 text-success" title="باز کردن"></a>
-                                @endif
+                                @can(\Fateme\RolePermissions\Models\Permission::PERMISSION_MANAGE_COURSES)
+                                    <a href=""  onclick="deleteItem(event, '{{ route('lessons.destroy',[$course->id ,$lesson->id]) }}')"
+                                       class="item-delete mlg-15" title="حذف"></a>
+                                    <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.accept', $lesson->id) }}',
+                                    'آیا از تایید این آیتم اطمینان دارید؟' , 'تایید شده')"
+                                       class="item-confirm mlg-15" title="تایید"></a>
+                                    <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.reject', $lesson->id) }}',
+                                    'آیا از رد این آیتم اطمینان دارید؟' ,'رد شده')"
+                                       class="item-reject mlg-15" title="رد"></a>
+                                    @if($lesson->status == \Fateme\Course\Models\Lesson::STATUS_OPENED)
+                                        <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.lock', $lesson->id) }}',
+                                        'آیا از قفل کردن این آیتم اطمینان دارید؟' , 'قفل شده', 'status')"
+                                           class="item-lock text-error mlg-15" title="قفل کردن"></a>
+                                    @else
+                                        <a href="" onclick="updateConfirmationStatus(event, '{{ route('lessons.unlock', $lesson->id) }}',
+                                        'آیا از باز کردن این آیتم اطمینان دارید؟' , 'باز', 'status')"
+                                           class="item-lock mlg-15 text-success" title="باز کردن"></a>
+                                    @endif
+                                @endcan
                                 <a href="{{ route('lessons.edit', [$course->id, $lesson->id]) }}" class="item-edit " title="ویرایش"></a>
                             </td>
                         </tr>

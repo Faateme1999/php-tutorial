@@ -14,8 +14,8 @@ Route::group([
     Route::delete('users/{user}/remove/{role}/role', 'UserController@removeRole')->name('users.removeRole');
     Route::patch('users/{user}/manualVerify', 'UserController@manualVerify')->name('users.manualVerify');
     Route::post('users/photo', 'UserController@updatePhoto')->name('users.photo');
-    Route::get('users/profile', 'UserController@profile')->name('users.profile');
-    Route::post('users/profile', 'UserController@updateProfile')->name('users.profile.update');
+    Route::get('edit-profile', 'UserController@profile')->name('users.profile');
+    Route::post('edit-profile', 'UserController@updateProfile')->name('users.profile.update');
     Route::get('tutors/{username}', "UserController@viewPofile")->name('viewProfile');
     Route::resource('users', 'UserController');
 
@@ -36,7 +36,7 @@ Route::group([
 
 
 //   logout
-   Route::post(uri:'/logout',action:'Auth\LoginController@logout')->name('logout');
+   Route::any(uri:'/logout',action:'Auth\LoginController@logout')->name('logout');
 
 //   reset password
    Route::get(uri:'/password/reset',action:'Auth\ForgotPasswordController@showVerifyCodeRequestForm')->name('password.request');

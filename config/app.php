@@ -177,6 +177,7 @@ return [
         Fateme\Category\Providers\CategoryServiceProvider::class,
         Fateme\Course\Providers\CourseServiceProvider::class,
         Fateme\Media\Providers\MediaServiceProvider::class,
+        Fateme\Front\Providers\FrontServiceProvider::class,
 
 
 

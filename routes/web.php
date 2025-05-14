@@ -5,9 +5,6 @@ use Fateme\RolePermissions\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Route::get('/test', function () {
 //\Spatie\Permission\Models\Permission::create(['name' => 'manage_role_permissions']);

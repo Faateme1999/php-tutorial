@@ -19,9 +19,14 @@ class CourseController extends Controller
 
     public function index(CourseRepo $courseRepo)
     {
-        $this->authorize('manage', Course::class);
-        $courses = $courseRepo->paginate();
+        $this->authorize('index', Course::class);
+        if (auth()->user()->hasAnyPermission([Permission::PERMISSION_MANAGE_COURSES, Permission::PERMISSION_SUPER_ADMIN])) {
+            $courses = $courseRepo->paginate();
+        }else{
+            $courses = $courseRepo->getCoursesByTeacherId(auth()->id());
+        }
         return view('Courses::index', compact('courses'));
+
     }
 
     public function create(UserRepo $userRepo, CategoryRepo $categoryRepo)

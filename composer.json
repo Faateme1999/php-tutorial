@@ -13,6 +13,7 @@
         "intervention/image": "^3.11",
         "intervention/image-laravel": "^1.5",
         "laravel/framework": "^10.10",
+        "laravel/legacy-factories": "^1.4",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.6",
@@ -37,6 +38,7 @@
             "Fateme\\RolePermissions\\": "modules/Fateme/RolePermissions/",
             "Fateme\\Course\\": "modules/Fateme/Course/",
             "Fateme\\Media\\": "modules/Fateme/Media/",
+            "Fateme\\Front\\": "modules/Fateme/Front/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

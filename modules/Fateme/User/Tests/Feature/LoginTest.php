@@ -24,7 +24,7 @@ class LoginTest extends TestCase
       ]
       );
 
-      $this->post(route('login'), [
+      $this->post(route('login.submit'), [
           'email' => $user->email,
           'password' => 'A!123a'
       ]);
@@ -44,7 +44,7 @@ class LoginTest extends TestCase
             ]
         );
 
-        $this->post(route('login'), [
+        $this->post(route('login.submit'), [
             'email' => $user->mobile,
             'password' => 'A!123a'
         ]);

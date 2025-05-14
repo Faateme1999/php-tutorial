@@ -3,6 +3,7 @@
 namespace Fateme\Course\Models;
 
 use Fateme\Category\Models\Category;
+use Fateme\Course\Repositories\CourseRepo;
 use Fateme\Media\Models\Media;
 use Fateme\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -54,5 +55,26 @@ class Course extends Model
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function getDuration()
+    {
+        return (new CourseRepo())->getDuration($this->id);
+    }
+    public function formattedDuration()
+    {
+        $duration =  $this->getDuration();
+        $h  =round($duration / 60) < 10 ? '0' .  round($duration / 60) :  round($duration / 60);
+        $m = ($duration % 60) < 10 ? '0' . ($duration % 60) : ($duration % 60);
+        return $h . ':' . $m . ":00";
+    }
+
+    public function getFormattedPrice()
+    {
+        return number_format($this->price);
+    }
+    public function path()
+    {
+        return route('singleCourse', $this->id . '-' . $this->slug);
     }
 }
